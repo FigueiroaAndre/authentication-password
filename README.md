@@ -18,7 +18,8 @@ In your terminal, login in your mysql server
 `$ mysql -u <yourlogin> -p`
 
 After inserting your password, you should be in mysql command line interface. Create a database called auth_example
-P.S: You can use another name to give to the database, but remember to use the chosen name in src/database/config.js
+
+P.S: You can choose another name to give to the database, but remember to update it in **src/database/config.js**
 
 `mysql> create database auth_example;`
 
@@ -39,10 +40,10 @@ module.exports = {
 
 To test the connection with your db: (not implemented yet)
 
-`npm run test-db-connection`
+`$ npm run test-db-connection`
 
 To create the tables in your db:
 
-`npm run create-db`
+`$ npm run create-db`
 
 **4+. Not implemented yet**
