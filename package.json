@@ -1,0 +1,33 @@
+{
+  "name": "authentication-password",
+  "version": "1.0.0",
+  "description": "Backend in nodejs , using express, connected to a MySQL database, using sequelize. The frontend should be able to register and login",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "create-db": "node src/database/database_creation.js",
+    "destroy-db": "node src/database/database_destruction.js",
+    "reset-db": "node src/database/database_reset.js",
+    "test-db-connection": "echo TODO"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FigueiroaAndre/authentication-password.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FigueiroaAndre/authentication-password/issues"
+  },
+  "homepage": "https://github.com/FigueiroaAndre/authentication-password#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.6",
+    "sequelize-cli": "^5.5.1"
+  }
+}
