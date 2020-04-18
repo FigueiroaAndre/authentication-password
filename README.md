@@ -19,31 +19,34 @@ In your terminal, login in your mysql server
 
 After inserting your password, you should be in mysql command line interface. Create a database called auth_example
 
-P.S: You can choose another name to give to the database, but remember to update it in **src/database/config.js**
-
 `mysql> create database auth_example;`
 
-**2. Update the information of the file /src/database/config.js**
+Create a databasae called auth_example_test too
+
+`mysql> create database auth_example_test`
+
+P.S: You can choose another name to give to the databases, but remember to update them in **.env** (for the main database) and **.env.test** (for the test database).
+
+
+**2. Update the environment information**
+
+Update the **.env** file to be able to access your database. The data of this file is used in **src/database/config.js**.
+
+To run tests, you should update **.env.test** as well.
 
 It should look like something like this:
 ```
-module.exports = {
-    database: "auth_example",
-    username: "<yourlogin>",
-    password: "<yourpassword>",
-    host: "localhost",
-    dialect: "mysql"
-};
+DB_NAME=auth_example
+DB_USERNAME=root
+DB_PASSWORD=your_db_password_here
+DB_HOST=127.0.0.1
+DB_DIALECT=mysql
 ```
 
-**3. Test the connection with the DB, then create the tables**
+**3. Run database tests**
 
-To test the connection with your db: (not implemented yet)
+Run the following command
 
-`$ npm run test-db-connection`
-
-To create the tables in your db:
-
-`$ npm run create-db`
+`npm run test-db`
 
 **4+. Not implemented yet**
