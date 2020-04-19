@@ -11,7 +11,25 @@ A nodejs application that handles a simple login-password authentication.
 
 ## Getting Started
 
-**1. Create a database in your mysql server**
+**1. Clone the repository**
+
+Open your terminal in the folder you want clone the repository and run
+
+`git clone https://github.com/FigueiroaAndre/authentication-password.git`
+
+**2. Install Dependencies**
+
+Open the repository folder in your terminal and run
+
+`npm install`
+(for npm users)
+
+or
+
+`yarn install`
+(yarn users)
+
+**3. Create a database in your mysql server**
 
 In your terminal, login in your mysql server
 
@@ -28,7 +46,7 @@ Create a databasae called auth_example_test too
 P.S: You can choose another name to give to the databases, but remember to update them in **.env** (for the main database) and **.env.test** (for the test database).
 
 
-**2. Update the environment information**
+**4. Update the environment information**
 
 Update the **.env** file to be able to access your database. The data of this file is used in **src/database/config.js**.
 
@@ -43,10 +61,10 @@ DB_HOST=127.0.0.1
 DB_DIALECT=mysql
 ```
 
-**3. Run database tests**
+**5. Run tests**
 
 Run the following command
 
-`npm run test-db`
+`npm run test`
 
-**4+. Not implemented yet**
+**6+. Not implemented yet**
