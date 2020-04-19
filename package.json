@@ -9,7 +9,8 @@
     "destroy-db": "node src/database/database_destruction.js",
     "reset-db": "node src/database/database_reset.js",
     "test": "NODE_ENV='test' jest",
-    "test-db": "NODE_ENV='test' jest ./__tests__/integration/database.test.js"
+    "test-db": "NODE_ENV='test' jest ./__tests__/integration/database.test.js",
+    "test-validation": "NODE_ENV='test' jest ./__tests__/unit/validation.test.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "joi": "^14.3.1",
     "mysql2": "^2.1.0",
     "sequelize": "^5.21.6",
     "sequelize-cli": "^5.5.1"
