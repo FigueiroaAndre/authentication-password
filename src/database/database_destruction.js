@@ -10,6 +10,4 @@ async function databaseDestruction(){
     }
 }
 
-databaseDestruction();
-
 module.exports = databaseDestruction;

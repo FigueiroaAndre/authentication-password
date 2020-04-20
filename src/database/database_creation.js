@@ -1,7 +1,7 @@
 const connection = require('./connection');
 const User = require('./models/User');
 
-async function databaseSync(){
+async function databaseCreation(){
     try{
         await connection.sync();
     } catch (err) {
@@ -10,6 +10,4 @@ async function databaseSync(){
     }
 }
 
-databaseSync();
-
-module.exports = databaseSync;
+module.exports = databaseCreation;

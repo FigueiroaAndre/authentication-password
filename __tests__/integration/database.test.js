@@ -31,4 +31,4 @@ describe('Database connection', () => {
         }
         expect(connected).toBe(true);
     });
-})
+});

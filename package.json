@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "create-db": "node src/database/database_creation.js",
-    "destroy-db": "node src/database/database_destruction.js",
-    "reset-db": "node src/database/database_reset.js",
+    "create-db": "DB_FUNCTION='create' node src/database/database_npm_script.js",
+    "destroy-db": "DB_FUNCTION='destroy' node src/database/database_npm_script.js",
+    "reset-db": "DB_FUNCTION='reset' node src/database/database_npm_script.js",
     "test": "NODE_ENV='test' jest",
     "test-db": "NODE_ENV='test' jest ./__tests__/integration/database.test.js",
     "test-validation": "NODE_ENV='test' jest ./__tests__/unit/validation.test.js"
@@ -29,6 +29,7 @@
     "nodemon": "^2.0.3"
   },
   "dependencies": {
+    "bcrypt": "^4.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "joi": "^14.3.1",
