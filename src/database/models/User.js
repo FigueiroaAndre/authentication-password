@@ -11,7 +11,10 @@ const User = connection.define('User',{
         type: DataTypes.STRING,
         allowNull: false
     },
-    about: DataTypes.TEXT,
+    about: {
+        type: DataTypes.TEXT,
+        defaultValue: ''
+    }
 },{
     tableName: 'Users',
 });
