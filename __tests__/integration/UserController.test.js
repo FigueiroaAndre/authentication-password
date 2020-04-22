@@ -25,7 +25,7 @@ describe('UserController methods', () => {
         await connection.close();
     });
 
-    test('Index method is able to list all users', async () => {
+    test('Index method lists all users', async () => {
         const response = await request(app)
             .get(ROUTES_PATH.USER)
             .expect('Content-Type', /json/)
@@ -35,5 +35,26 @@ describe('UserController methods', () => {
             { login: 'crisCR7', about: 'GOAT'},
             { login: 'wesley', about: ''}
         ]);
+    });
+
+    test('Show method shows the user specified', async () => {
+        const response = await request(app)
+            .get(`${ROUTES_PATH.USER}/andrefig`)
+            .expect('Content-Type', /json/)
+            .expect(200);
+        expect(response.body).toEqual({
+            login: 'andrefig',
+            about: 'hello test'
+        });
+    });
+
+    test('Show method must return a message if specified user is not registered', async () => {
+        const response = await request(app)
+            .get(`${ROUTES_PATH.USER}/idontexist`)
+            .expect('Content-Type', /json/)
+            .expect(404);
+        expect(response.body).toEqual({
+            message: 'user not found'
+        });
     });
 });
