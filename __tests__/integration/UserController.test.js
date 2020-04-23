@@ -57,4 +57,43 @@ describe('UserController methods', () => {
             message: 'user not found'
         });
     });
+
+    test('Store method must register a new user in database', async () => {
+        const newUser = {
+            login: 'zidane',
+            password: '-!@number10FranceZZ',
+            about: 'current real madrid coach'
+        };
+        let response = await request(app)
+            .post(ROUTES_PATH.USER)
+            .send(newUser)
+            .expect('Content-Type', /json/)
+            .expect(201);
+        expect(response.body).toEqual({
+            login: newUser.login,
+            about: newUser.about
+        });
+        response = await request(app)
+            .get(`${ROUTES_PATH.USER}/${newUser.login}`)
+            .expect('Content-Type', /json/)
+            .expect(200);
+        expect(response.body).toEqual({
+                login: newUser.login,
+                about: newUser.about
+        });
+    });
+
+    test('Store method must be able to validate data before make a query to database', async () => {
+        const newUser = {
+            login: 'an',
+            password: '?andREfigu31roaGG' 
+        };
+        const response = await request(app)
+            .post(ROUTES_PATH.USER)
+            .send(newUser)
+            .expect('Content-Type', /json/)
+            .expect(400);
+        expect(response.body.error.name).toBe('ValidationError');
+        expect(response.body.error.details[0].message).toBe('"login" length must be at least 3 characters long');
+    });
 });
