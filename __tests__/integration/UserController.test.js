@@ -65,7 +65,7 @@ describe('UserController methods', () => {
             about: 'current real madrid coach'
         };
         let response = await request(app)
-            .post(ROUTES_PATH.USER)
+            .post(ROUTES_PATH.REGISTER)
             .send(newUser)
             .expect('Content-Type', /json/)
             .expect(201);
@@ -86,14 +86,28 @@ describe('UserController methods', () => {
     test('Store method must be able to validate data before make a query to database', async () => {
         const newUser = {
             login: 'an',
-            password: '?andREfigu31roaGG' 
+            password: '?andREfigu31roaGG'
         };
         const response = await request(app)
-            .post(ROUTES_PATH.USER)
+            .post(ROUTES_PATH.REGISTER)
             .send(newUser)
             .expect('Content-Type', /json/)
             .expect(400);
         expect(response.body.error.name).toBe('ValidationError');
         expect(response.body.error.details[0].message).toBe('"login" length must be at least 3 characters long');
+    });
+
+    test('Store method must not be able to add a user that have been registered already', async () => {
+        const newUser = {
+            login: 'andrefig',
+            password: '-!@number10FranceZZ',
+            about: 'hello test'
+        };
+        const response = await request(app)
+            .post(ROUTES_PATH.REGISTER)
+            .send(newUser)
+            .expect('Content-Type', /json/)
+            .expect(400);
+        expect(response.body.errors[0].message).toBe('Users.PRIMARY must be unique');
     });
 });
